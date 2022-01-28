@@ -659,6 +659,8 @@ namespace cereal
       //! Loads a nullptr from the current node
       void loadValue(std::nullptr_t&)   { search(); CEREAL_RAPIDJSON_ASSERT(itsIteratorStack.back().value().IsNull()); ++itsIteratorStack.back(); }
 
+	  bool isValueNull() { search(); return itsIteratorStack.back().value().IsNull(); }
+
       // Special cases to handle various flavors of long, which tend to conflict with
       // the int32_t or int64_t on various compiler/OS combinations.  MSVC doesn't need any of this.
       #ifndef _MSC_VER
